@@ -18,4 +18,10 @@ export const theme = {
       font-weight: 400;
     `,
   },
+  checkBox: {
+    extend: () => `
+      width: 100%;
+      margin: 10px 0
+    `,
+  },
 };

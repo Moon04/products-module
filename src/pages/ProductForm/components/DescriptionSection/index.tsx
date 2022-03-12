@@ -5,7 +5,7 @@ import { TextEditorGroup, TextInputGroup } from "../../../../components";
 
 type Props = {
   title: string;
-  desc: any;
+  desc: string;
   onChange: (e: any) => void;
   onDescChange: (desc: string) => void;
 };

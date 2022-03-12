@@ -4,7 +4,7 @@ import { FormField, TextInput } from "grommet";
 type Props = {
   id: string;
   label: string;
-  placeholder: any;
+  placeholder?: string;
   value: string;
   onChange: (e: any) => void;
 };
