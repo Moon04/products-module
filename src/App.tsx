@@ -1,6 +1,6 @@
 import React from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Box, Button, Heading, Grommet } from "grommet";
+import { Box, Button, Heading, Grommet, Main } from "grommet";
 import { Add } from "grommet-icons";
 
 import ProductForm from "./pages/ProductForm";
@@ -35,10 +35,16 @@ function App() {
             href={"/add-product"}
           />
         </AppBar>
-        <Routes>
-          {/* <Route exact={true} path="/" component={Home} /> TODO: ADD Home COMPONENT */}
-          <Route caseSensitive path="/add-product" element={<ProductForm />} />
-        </Routes>
+        <Main pad={"large"}>
+          <Routes>
+            {/* <Route exact={true} path="/" component={Home} /> TODO: ADD Home COMPONENT */}
+            <Route
+              caseSensitive
+              path="/add-product"
+              element={<ProductForm />}
+            />
+          </Routes>
+        </Main>
       </Grommet>
     </BrowserRouter>
   );
