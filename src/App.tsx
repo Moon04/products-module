@@ -1,4 +1,5 @@
 import React from "react";
+import { BrowserRouter, Routes } from "react-router-dom";
 import { Box, Button, Heading, Grommet } from "grommet";
 import { Add } from "grommet-icons";
 
@@ -20,20 +21,24 @@ const AppBar = (props: any) => (
 
 function App() {
   return (
-    <Grommet theme={theme}>
-      <AppBar>
-        <Heading level="3" margin="none">
-          My Products
-        </Heading>
-        <Button
-          title={"Add Product"}
-          icon={<Add color="#ffffff" />}
-          onClick={() => {
-            // TODO: redirect to product form
-          }}
-        />
-      </AppBar>
-    </Grommet>
+    <BrowserRouter>
+      <Grommet theme={theme}>
+        <AppBar>
+          <Heading level="3" margin="none">
+            My Products
+          </Heading>
+          <Button
+            title={"Add Product"}
+            icon={<Add color="#ffffff" />}
+            href={"/add-product"}
+          />
+        </AppBar>
+        <Routes>
+          {/* <Route exact={true} path="/" component={Home} /> TODO: ADD Home COMPONENT */}
+          {/* <Route exact={true} path="/add-product" component={ProductForm} /> TODO: ADD ProductForm COMPONENT */}
+        </Routes>
+      </Grommet>
+    </BrowserRouter>
   );
 }
 
