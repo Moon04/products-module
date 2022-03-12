@@ -10,4 +10,12 @@ export const theme = {
       height: "20px",
     },
   },
+  formField: {
+    border: false,
+  },
+  textInput: {
+    extend: () => `
+      font-weight: 400;
+    `,
+  },
 };
