@@ -3,6 +3,7 @@ import { Form } from "grommet";
 
 import DescriptionSection from "./components/DescriptionSection";
 import InventorySection from "./components/InventorySection";
+import PricingSection from "./components/PricingSection";
 
 const ProductForm = () => {
   const [product, setProduct] = useState({
@@ -13,13 +14,19 @@ const ProductForm = () => {
     isQuantityTracked: false,
     isSoldOutOpenToSell: false,
     quantity: 0,
+    price: 0.0,
+    compareAt: 0.0,
+    costPerItem: 0.0,
+    isTaxCharged: false,
   });
   // const [valid, setValid] = useState(false);
 
   const onChange = (e: any) => {
     const { id, value, checked } = e.target;
     console.log(id, value, checked);
-    if (["isQuantityTracked", "isSoldOutOpenToSell"].includes(id)) {
+    if (
+      ["isQuantityTracked", "isSoldOutOpenToSell", "isTaxCharged"].includes(id)
+    ) {
       setProduct({ ...product, [id]: checked });
     } else {
       setProduct({ ...product, [id]: value });
@@ -55,8 +62,15 @@ const ProductForm = () => {
         onChange={onChange}
       />
 
+      <PricingSection
+        price={product.price}
+        compareAt={product.compareAt}
+        costPerItem={product.costPerItem}
+        isTaxCharged={product.isTaxCharged}
+        onChange={onChange}
+      />
+
       {/* TODO: Add Media Section */}
-      {/* TODO: Add Pricing Section */}
     </Form>
   );
 };
