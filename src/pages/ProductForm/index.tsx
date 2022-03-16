@@ -1,12 +1,15 @@
 import React, { useState } from "react";
 import { Box, Button, Form } from "grommet";
+import { useAlert } from "react-alert";
 
 import DescriptionSection from "./components/DescriptionSection";
 import InventorySection from "./components/InventorySection";
 import PricingSection from "./components/PricingSection";
 import MediaSection from "./components/MediaSection";
+import { addProduct } from "../../services/productService";
 
 const ProductForm = () => {
+  const alert = useAlert();
   const [product, setProduct] = useState({
     title: "",
     desc: "",
@@ -42,6 +45,13 @@ const ProductForm = () => {
     setProduct({ ...product, mediaFiles: files });
   };
 
+  const onSubmit = () => {
+    addProduct(product).then((res) => {
+      if (res.status === 201)
+        alert.show("Product Added Successfully!", { type: "success" });
+    });
+  };
+
   return (
     <Form
       validate="change"
@@ -74,7 +84,12 @@ const ProductForm = () => {
       <MediaSection onMediaUpload={onMediaUpload} />
 
       <Box>
-        <Button alignSelf="center" primary label="Add Product" />
+        <Button
+          alignSelf="center"
+          primary
+          label="Add Product"
+          onClick={onSubmit}
+        />
       </Box>
     </Form>
   );
