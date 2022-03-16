@@ -38,6 +38,7 @@ const PricingSection = ({
             id={"price"}
             label={"Price"}
             pattern={pricePattern}
+            icon={<span>EGB</span>}
             value={price}
             onChange={onChange}
           />
@@ -45,6 +46,7 @@ const PricingSection = ({
             id={"compareAt"}
             label={"Compare at price"}
             pattern={pricePattern}
+            icon={<span>EGB</span>}
             value={compareAt}
             onChange={onChange}
           />
@@ -64,6 +66,7 @@ const PricingSection = ({
               id={"costPerItem"}
               label={"Cost per item"}
               pattern={pricePattern}
+              icon={<span>EGB</span>}
               value={costPerItem}
               onChange={onChange}
             />
