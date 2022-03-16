@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Form } from "grommet";
+import { Box, Button, Form } from "grommet";
 
 import DescriptionSection from "./components/DescriptionSection";
 import InventorySection from "./components/InventorySection";
 import PricingSection from "./components/PricingSection";
+import MediaSection from "./components/MediaSection";
 
 const ProductForm = () => {
   const [product, setProduct] = useState({
@@ -18,12 +19,11 @@ const ProductForm = () => {
     compareAt: 0.0,
     costPerItem: 0.0,
     isTaxCharged: false,
+    mediaFiles: null as any,
   });
-  // const [valid, setValid] = useState(false);
 
   const onChange = (e: any) => {
     const { id, value, checked } = e.target;
-    console.log(id, value, checked);
     if (
       ["isQuantityTracked", "isSoldOutOpenToSell", "isTaxCharged"].includes(id)
     ) {
@@ -37,14 +37,15 @@ const ProductForm = () => {
     setProduct({ ...product, desc });
   };
 
+  const onMediaUpload = (filesData: any[]) => {
+    const files = filesData.map((fileData) => fileData.file);
+    setProduct({ ...product, mediaFiles: files });
+  };
+
   return (
     <Form
       validate="change"
       onSubmit={({ value }) => console.log("Submit", value)}
-      // onValidate={(validationResults) => {
-      //   console.log("validationResults = ", validationResults);
-      //   setValid(validationResults.valid);
-      // }}
     >
       <DescriptionSection
         title={product.title}
@@ -70,7 +71,11 @@ const ProductForm = () => {
         onChange={onChange}
       />
 
-      {/* TODO: Add Media Section */}
+      <MediaSection onMediaUpload={onMediaUpload} />
+
+      <Box>
+        <Button alignSelf="center" primary label="Add Product" />
+      </Box>
     </Form>
   );
 };
