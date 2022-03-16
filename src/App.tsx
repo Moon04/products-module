@@ -35,7 +35,7 @@ function App() {
             href={"/add-product"}
           />
         </AppBar>
-        <Main pad={"large"}>
+        <Main pad={"xlarge"}>
           <Routes>
             {/* <Route exact={true} path="/" component={Home} /> TODO: ADD Home COMPONENT */}
             <Route
